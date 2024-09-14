@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Nishimiya ❤️ Hiro</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100..900&display=swap");
+
+            /* Updated Colors */
+            :root {
+                --powder-blue: #9bb6d4ff;
+                --alabaster: #eae3dbff;
+                --columbia-blue: #a0c6dbff;
+                --gunmetal: #1b2d2aff; /* Keeping this for contrast */
+            }
+
+            body {
+                margin: 0;
+                font-family: "Noto Sans JP", sans-serif;
+                background-color: var(--alabaster);
+                color: var(--gunmetal);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            /* English font class */
+            .english-font {
+                font-family: "Noto Sans Display", sans-serif;
+            }
+
+            .navbar {
+                margin-top: 50px;
+                margin-bottom: 50px;
+                display: flex;
+                justify-content: center;
+                width: 80%;
+                background-color: var(--alabaster);
+                transition: all 0.3s ease;
+            }
+
+            .navbar a {
+                text-decoration: none;
+                color: var(--gunmetal);
+                font-size: 18px;
+                margin: 0 30px;
+                padding: 10px;
+                transition:
+                    transform 0.3s ease,
+                    color 0.3s ease;
+                position: relative;
+                display: inline-block;
+            }
+
+            .navbar a:hover {
+                transform: translateY(-5px);
+                color: var(--columbia-blue);
+            }
+
+            @media (max-width: 768px) {
+                .navbar {
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    padding: 20px 0;
+                    margin-top: 10px;
+                    margin-bottom: 0;
+                }
+
+                .navbar a {
+                    margin: 10px 0;
+                    font-size: 20px;
+                }
+            }
+
+            .outline-box {
+                border: 2px solid var(--powder-blue);
+                padding: 40px;
+                width: 95%;
+                max-width: 1200px;
+                min-height: 70vh;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-sizing: border-box;
+                background-color: var(--alabaster);
+                position: relative;
+                overflow: hidden;
+                margin-bottom: 50px;
+            }
+
+            .content-wrapper {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 1200px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .text-content {
+                flex: 1;
+                min-width: 300px;
+                padding-right: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                margin-top: 20px;
+            }
+
+            .title {
+                font-size: 3rem;
+                font-weight: bold;
+                color: var(--gunmetal);
+                margin-bottom: 10px;
+                transition:
+                    transform 0.3s ease,
+                    color 0.3s ease;
+                position: relative;
+                display: inline-block;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+                color: var(--gunmetal);
+                font-weight: normal; /* Regular font weight */
+                line-height: 1.4;
+                margin-bottom: 10px;
+                transition:
+                    transform 0.3s ease,
+                    color 0.3s ease;
+                position: relative;
+                display: inline-block;
+            }
+
+            .image-container {
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .image-container a img {
+                max-width: 100%;
+                height: 600px;
+                max-height: 80vh;
+                object-fit: cover;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+            .image-container a img:hover {
+                transform: scale(1.05);
+            }
+
+            @media (max-width: 768px) {
+                .outline-box {
+                    padding: 20px;
+                    text-align: center;
+                    height: auto;
+                    min-height: 70vh;
+                    margin-bottom: 20px;
+                }
+
+                .content-wrapper {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .text-content {
+                    padding-right: 0;
+                    margin-bottom: 20px;
+                    min-width: 0;
+                    margin-top: 0;
+                }
+
+                .image-container {
+                    width: 100%;
+                }
+
+                .image-container a img {
+                    max-height: 60vh;
+                }
+            }
+
+            .flag-container {
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                display: flex;
+                gap: 10px;
+            }
+
+            .flag {
+                width: 40px;
+                height: 25px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: transform 0.3s ease;
+            }
+
+            .flag:hover {
+                transform: scale(1.1);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flag-container">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+                alt="English"
+                class="flag"
+                id="flag-en"
+            />
+            <img
+                src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg"
+                alt="Japanese"
+                class="flag"
+                id="flag-jp"
+            />
+        </div>
+
+        <div class="navbar">
+            <a
+                href="https://github.com/xangelkawaiix"
+                class="translate-link"
+                data-jp="プロフィール"
+                data-en="Profile"
+                >プロフィール</a
+            >
+            <a
+                href="#"
+                class="translate-link"
+                data-jp="ポートフォリオ"
+                data-en="Portfolio"
+                >ポートフォリオ</a
+            >
+            <a
+                href="https://github.com/xangelkawaiix?tab=repositories"
+                class="translate-link"
+                data-jp="プロジェクト"
+                data-en="Project"
+                >プロジェクト</a
+            >
+            <a href="#" class="translate-link" data-jp="ブログ" data-en="Blog"
+                >ブログ</a
+            >
+        </div>
+
+        <div class="outline-box">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <div class="title" data-jp="西宮" data-en="Nishimiya">
+                        西宮
+                    </div>
+                    <div
+                        class="subtitle"
+                        data-jp="篠澤ヒロ大好き"
+                        data-en="Loves Hiro Shinosawa"
+                    >
+                        篠澤ヒロ大好き
+                    </div>
+                    <div
+                        class="subtitle"
+                        data-jp="独学プログラマー、コンピュータ・エンジニアリング専攻"
+                        data-en="Self-taught Programmer, Major in Computer Engineering"
+                    >
+                        独学プログラマー、コンピュータ・エンジニアリング専攻
+                    </div>
+                </div>
+                <div class="image-container">
+                    <a
+                        href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID"
+                        target="_blank"
+                    >
+                        <img src="./hiro.jpg" alt="Shinosawa Hiro" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Utility functions to get and set cookies
+            function setCookie(name, value, days) {
+                const d = new Date();
+                d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+                let expires = "expires=" + d.toUTCString();
+                document.cookie =
+                    name + "=" + value + ";" + expires + ";path=/";
+            }
+
+            function getCookie(name) {
+                let cookieArr = document.cookie.split(";");
+
+                for (let i = 0; i < cookieArr.length; i++) {
+                    let cookiePair = cookieArr[i].split("=");
+
+                    if (name === cookiePair[0].trim()) {
+                        return decodeURIComponent(cookiePair[1]);
+                    }
+                }
+
+                return null;
+            }
+
+            function updateText() {
+                const lang = getCookie("language") || "jp";
+                const elements = document.querySelectorAll(".translate-link");
+                const titles = document.querySelectorAll(".title");
+                const subtitles = document.querySelectorAll(".subtitle");
+
+                elements.forEach((element) => {
+                    element.textContent = element.dataset[lang];
+                });
+
+                titles.forEach((title) => {
+                    title.textContent = title.dataset[lang];
+                });
+
+                subtitles.forEach((subtitle) => {
+                    subtitle.textContent = subtitle.dataset[lang];
+                });
+
+                // Apply the correct font
+                if (lang === "en") {
+                    document.body.classList.add("english-font");
+                } else {
+                    document.body.classList.remove("english-font");
+                }
+            }
+
+            document
+                .getElementById("flag-en")
+                .addEventListener("click", function () {
+                    setCookie("language", "en", 7);
+                    updateText();
+                });
+
+            document
+                .getElementById("flag-jp")
+                .addEventListener("click", function () {
+                    setCookie("language", "jp", 7);
+                    updateText();
+                });
+
+            window.onload = function () {
+                updateText();
+            };
+        </script>
+    </body>
+</html>
